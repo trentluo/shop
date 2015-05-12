@@ -1,0 +1,8 @@
+<toolbox>
+	<xhtml>true</xhtml>
+	<tool>
+		<key>const</key>
+		<scope>application</scope>
+		<class>com.com.rency.shop.web.tools.Const</class>
+	</tool>
+</toolbox>

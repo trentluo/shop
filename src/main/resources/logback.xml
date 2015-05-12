@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration scan="true" scanPeriod="30 seconds" debug="false">  
+	<property name="logRoot" value="/opt/logs/shop" />   
+
+	<!-- console appender -->  
+	<appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8" />
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<!-- common appender -->
+	<appender name="COMMON-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder charset="UTF-8" />
+		<file>${logRoot}/common.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logRoot}/common.log.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<!-- spring+mybatis -->
+	<appender name="SPRING-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder charset="UTF-8" />
+		<file>${logRoot}/sm.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logRoot}/sm.log.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<!-- logger -->  
+	<logger name="com.rency.shop.web" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="COMMON-APPENDER" />
+	</logger>
+	<logger name="org.springframework" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="SPRING-APPENDER" />
+	</logger>
+	<logger name="org.apache.ibatis" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="SPRING-APPENDER" />
+	</logger>
+	<logger name="org.mybatis.spring" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="SPRING-APPENDER" />
+	</logger>
+	
+	<!-- root -->  
+	<root level="debug">  
+		<appender-ref ref="CONSOLE-APPENDER" />
+		<appender-ref ref="COMMON-APPENDER" />
+	</root>
+</configuration>
