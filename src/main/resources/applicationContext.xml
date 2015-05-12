@@ -27,8 +27,6 @@
 		</property>
 	</bean>
 	
-	<import resource="classpath:applicationContext-utils.xml" />
-	
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${db.driver}"></property>
@@ -58,9 +56,34 @@
         <property name="webResource" ref="webResource" />
     </bean>
 
-    <bean id="webResource" class="com.rency.shop.web.tools.WebDynamicResource">
-        <property name="version" value="1.0.0"/>
-        <property name="staticAddress" value="http://localhost:8080/shop" />
+    <bean id="webResource" class="com.rency.shop.web.entity.WebDynamicResource">
+        <property name="version" value="${version}"/>
+        <property name="staticAddress" value="${staticAddress}" />
+    </bean>
+    
+    <!-- 用以生成验证码 -->
+	<bean id="kaptchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <property name="config">
+            <bean class="com.google.code.kaptcha.util.Config">
+                <constructor-arg>
+                    <props>
+                        <prop key="kaptcha.session.key">kaptcha</prop>
+                        <prop key="kaptcha.border">no</prop>
+                        <prop key="kaptcha.image.width">100</prop>
+                        <prop key="kaptcha.image.height">28</prop>
+                        <prop key="kaptcha.textproducer.char.string">0123456789</prop>
+                        <prop key="kaptcha.textproducer.char.length">4</prop>
+                        <prop key="kaptcha.textproducer.font.size">28</prop>
+                        <!-- <prop key="kaptcha.border">yes</prop>
+                        <prop key="kaptcha.border.color">blue</prop>
+                        <prop key="kaptcha.border.thickness">1</prop> -->
+                        <prop key="kaptcha.textproducer.font.names">Arial,Courier</prop>
+                        <prop key="kaptcha.textproducer.font.color">blue</prop>
+                        <prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>
+                    </props>
+                </constructor-arg>
+            </bean>
+        </property>
     </bean>
 
 </beans>

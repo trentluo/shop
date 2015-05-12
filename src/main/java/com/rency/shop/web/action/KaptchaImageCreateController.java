@@ -26,7 +26,7 @@ public class KaptchaImageCreateController {
 
 	@Autowired
 	@Qualifier("kaptchaProducer")
-	private Producer kaptchaProducer;
+	private Producer kaptchaProducer = null;
 	
 	/**
 	 * 创建验证码图片
