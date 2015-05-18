@@ -1,4 +1,4 @@
-package com.rency.shop.web.entity;
+package com.rency.shop.web;
 
 import java.io.Serializable;
 

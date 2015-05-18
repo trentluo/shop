@@ -1,0 +1,117 @@
+<form id="queryForm" name="queryForm" action="#springUrl('/my/home.htm')" method="post">
+	<input type="hidden" id="currentPage" name="currentPage" value='$!response.data.page.currentPage'/>
+</form>
+<div class="trade_all">
+
+                         <table class="list_check_table business_record">
+                           <colgroup>
+                                    <col width="130px">
+                                    <col width="300px">
+                                    <col width="180px">
+                                    <col width="160px">
+                                    <col width="130px">
+                                    <col width="100px">
+                            </colgroup>
+                           <tr>
+	                            <th class="time">创建时间</th>
+	                            <th>名称&nbsp;|&nbsp;交易号</th>
+	                            <th>对方</th>
+	                            <th>金额</th>
+	                            <th>金币金额</th>
+	                            <th>状态</th>
+                            </tr>
+                            #set ($i=1)
+                            #set($status = "")
+                            #set($plusminus ="")
+                            #set($moneycolor="")
+                            #foreach($info in $response.data.list)
+                                #if($i%2 != 0)
+                                    #set ($odd="odd")
+                                #else
+                                    #set ($odd="time")
+                                #end
+                                #set($i=$i+1)
+
+                                #if($info.tradeType=="PREPAY_ACQUIRING")
+                                      ## 下订收单交易 显示红色
+                                       #set($moneycolor="money ff5f40")
+                                #elseif($info.tradeType=="INSTANT_TRASFER")
+                                		#set($moneycolor="")
+                                #else
+                                  	   #set($moneycolor="fc_green")
+                                #end
+
+                                 #if(${info.orderState} == "100")
+                                   #set($tradeStatus="待支付")
+                                   #set($moneycolor="money")
+                                 #elseif(${info.orderState} == "110" || ${info.orderState}=="111" || ${info.orderState} == "121")
+                                   #set($tradeStatus="处理中")
+                                 #elseif(${info.orderState} == "201")
+                                   #set($tradeStatus="付款成功")
+                                 #elseif($info.orderState == "999")
+                                   #set($tradeStatus="交易关闭")
+                                 #end
+
+                                 #if($info.tradeType=="INSTANT_TRASFER")
+                                        #if(${info.orderState} == "301"||${info.orderState} == "401")
+                                            #set($tradeStatus="转账成功")
+                                        #end
+                                 #else
+                                        #if(${info.orderState} == "301")
+                                            #set($tradeStatus="交易成功")
+                                        #elseif(${info.orderState} == "401")
+                                            #set($tradeStatus="交易结束")
+                                        #end
+                                 #end
+
+                                   #if($info.memberId == $info.buyerId)
+                                    	#set($plusminus ="-")
+                                   #elseif($info.memberId == $info.sellerId)
+                                   		#set($plusminus ="+")
+                                   #end
+
+                            <tr class=$odd>
+                               <td class="time">$!dateUtil.getNoSecondDateString(${info.gmtSubmit})</td>
+                               #if($info.tradeType=="PREPAY_ACQUIRING")
+                               <td>订金<br>$!info.bizNo</td>
+                               #else
+                               <td>$!{info.tradeMemo}<br>$!info.bizNo</td>
+                               #end
+                                 #if($info.memberId == $info.buyerId)
+                                    <td>$info.sellerName</td>
+                                 #else
+                                 	<td>$info.buyerName</td>
+                                 #end
+                               <td class='${moneycolor}'>
+                                  #if($moneyUtil.getAmount($!info.payAmount) == "0.00")
+                                     --
+                                  #else
+                                    $!{plusminus}$!{moneyUtil.getAmount($!info.payAmount)}
+                                  #end
+                               </td>
+                               <td class='${moneycolor}'>
+                               	  #if($moneyUtil.getAmount($!info.coinAmount) == "0.00")
+                                     --
+                                  #else
+                                    $!{plusminus}$!{moneyUtil.getAmount($!info.coinAmount)}
+                                  #end
+                               </td>
+                               <td>$!{tradeStatus}</td>
+                            </tr>
+                            #end
+                            #if(!$response.data.list || $response.data.list.size()<=0)
+                            	<td colspan="10">无交易信息！</td>
+                            #end
+                         </table>
+                         #parse("common/control/paginator.vm")
+        </div>
+    </div>
+ </div>
+    <script type="text/javascript">
+			   function toQuerySubmit(sendPage){
+				  queryForm.currentPage.value =  sendPage;
+				  document.getElementById("queryForm").submit();
+			  }
+	</script>
+
+

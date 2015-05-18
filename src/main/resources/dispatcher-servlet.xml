@@ -58,16 +58,6 @@
                         <map>
                             <!-- 个性化布局在此添加 -->
                             <entry key="login*" value="common/layout/login-layout.vm" />
-                            <!-- list布局 -->
-                            <entry key="main/trade/*" value="common/layout/list-layout.vm" />
-                            <entry key="main/settlement/*" value="common/layout/list-layout.vm" />
-                            <entry key="main/walletCheck/*" value="common/layout/list-layout.vm" />
-                            <entry key="main/index*" value="common/layout/list-layout.vm" />
-                            <entry key="main/register/*" value="common/layout/nonav-layout.vm" />
-                            <entry key="main/list/*" value="common/layout/list-layout.vm" />
-                            <entry key="main/downloadBill/*" value="common/layout/list-layout.vm" />
-							<entry key="main/finance/detailList/*" value="common/layout/finance-list-layout.vm" />
-                            <entry key="main/finance/*" value="common/layout/finance-default-layout.vm" />
                             <!-- 默认布局 -->
                             <entry key="main/*" value="common/layout/default-layout.vm" />
                             <entry key="common/*" value="common/layout/default-layout.vm" />

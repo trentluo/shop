@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.rency.shop.web.entity.WebDynamicResource;
+import com.rency.shop.web.WebDynamicResource;
 import com.rency.shop.web.tools.Const;
 
 public class ServletContextInitListener implements ApplicationContextAware {

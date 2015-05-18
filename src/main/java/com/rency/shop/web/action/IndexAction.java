@@ -9,15 +9,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.rency.shop.web.tools.Const;
+
 @Controller
-@RequestMapping("/")
+@RequestMapping("/index")
 public class IndexAction {
 	
 	private static final Logger logger = LoggerFactory.getLogger(IndexAction.class);
 
-	@RequestMapping("/my/home.htm")
+	@RequestMapping("/home.htm")
 	public ModelAndView home(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		
+		logger.info("into index/home page");
+		ModelAndView mv = new ModelAndView(Const.VIEW_SUFFIX_MAIN+"index");
+		return mv;
 	}
 	
 }
