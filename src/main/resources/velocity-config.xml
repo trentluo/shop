@@ -8,9 +8,7 @@
          ">  
 	
 	<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		<property name="resourceLoaderPath">
-			<value>views</value>
-		</property> 
+		<property name="resourceLoaderPath" value="views" />
 		<property name="velocityProperties">
 			<props>
 				<prop key="input.encoding">UTF-8</prop>

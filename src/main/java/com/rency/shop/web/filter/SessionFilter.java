@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -67,12 +68,13 @@ public class SessionFilter implements Filter, InitializingBean{
 	        if(user == null){
 	        	logger.info("用户session不存在，跳转至登录页面");
 	        	String loginUrl = "/login/loginInput.htm?"+SYSDICT.URL_PARAM_CALLBACK_KEY+URLEncoder.encode(url,SYSDICT.CHARSET);
-	        	response.sendRedirect(loginUrl);
-	        	return;
+	        	RequestDispatcher dispatcher = request.getRequestDispatcher(loginUrl);
+                dispatcher.forward(request, response);
 	        }
 	        chain.doFilter(request, response);
 		}catch(Exception e){
-			
+			logger.error("系统未知异常.",e);
+			e.printStackTrace();
 		}
 	}
 
