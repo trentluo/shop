@@ -17,6 +17,8 @@ public class WebDynamicResource implements InitializingBean,Serializable {
 	private String version;
 	
 	private String staticAddress;
+	
+	private String sysTitle;
 
 	public String getVersion() {
 		return version;
@@ -32,6 +34,14 @@ public class WebDynamicResource implements InitializingBean,Serializable {
 
 	public void setStaticAddress(String staticAddress) {
 		this.staticAddress = staticAddress;
+	}
+
+	public String getSysTitle() {
+		return sysTitle;
+	}
+
+	public void setSysTitle(String sysTitle) {
+		this.sysTitle = sysTitle;
 	}
 
 	@Override

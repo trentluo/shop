@@ -9,16 +9,22 @@
          http://www.springframework.org/schema/aop
          http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <mvc:default-servlet-handler />
-
-    <mvc:annotation-driven />
-    <context:component-scan base-package="com.rency.shop.web" />
+    <context:component-scan base-package="com.rency.shop.web.action" />
+    
+    <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->  
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>text/html;charset=UTF-8</value>  
+            </list>  
+        </property>  
+    </bean>
     
     <!-- velocity config -->
     <import resource="classpath:velocity-config.xml" />
-
+    
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
-
+    <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->  
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
         <property name="messageConverters">
              <list>
@@ -33,17 +39,15 @@
              </list>
          </property>
     </bean>
-
+    
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="ignoreAcceptHeader" value="true" />
         <property name="defaultContentType" value="text/html" />
-        <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
         <property name="mediaTypes">
             <map>
                 <entry key="json" value="application/json" />
             </map>
         </property>
-        <!-- 用于开启 /model/123?format=json 的支持 -->
         <property name="favorParameter" value="false" />
         <property name="viewResolvers">
             <list>
@@ -62,8 +66,6 @@
                             <!-- 默认布局 -->
                             <entry key="main/*" value="common/layout/default-layout.vm" />
                             <entry key="common/*" value="common/layout/default-layout.vm" />
-                            
-                            
                         </map>
                     </property>
                 </bean>
@@ -72,9 +74,7 @@
         <property name="defaultViews">
             <list>
                 <!-- for application/json -->
-                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
-
-                </bean>
+                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
             </list>
         </property>
     </bean>

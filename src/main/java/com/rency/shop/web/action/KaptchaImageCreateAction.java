@@ -35,7 +35,7 @@ public class KaptchaImageCreateAction {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/captcha-image.htm")
+	@RequestMapping("captcha-image.htm")
 	public ModelAndView creater(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		response.setDateHeader("Expires", 0);
 		response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");  

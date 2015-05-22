@@ -32,7 +32,5 @@ $(function(){
 		function(){$(this).find(".sl-shadow").show();$(this).find(".angle").show();},
 		function(){$(this).find(".sl-shadow").hide();$(this).find(".angle").hide();}
 	);
-
 })
-
 </script>

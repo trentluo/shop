@@ -2,20 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>#if($page_title) $page_title #else 商户登录 #end</title>
+    <title>${WEB_RESOURCE.sysTitle}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-	<script src="${WEB_RESOURCE.staticAddress}enterpriseWallet/js/jquery.js"></script>
+    <link href="${WEB_RESOURCE.staticAddress}/css/bootstrap/bootstrap.min.css${WEB_RESOURCE.staticVersion}" rel="stylesheet" media="screen"  id="theme_date">
+    <script src="${WEB_RESOURCE.staticAddress}/js/jquery-2.1.4.min.js${WEB_RESOURCE.staticVersion}"></script>
+    <!--[if lt IE 9]>
+      <script src="${WEB_RESOURCE.staticAddress}/js/html5shiv.js${WEB_RESOURCE.staticVersion}"></script>
+    <![endif]-->
 </head>
-<style type="text/css">
-    .safe_plugin {
-        display: none;
-        height: 250px;
-        position: relative;
-        width: 540px;
-    }
-</style>
 <body class="login_body">
   <div id="pageF">
     #parse("/common/control/header-login.vm")

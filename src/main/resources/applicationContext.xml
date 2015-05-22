@@ -16,17 +16,20 @@
         http://www.springframework.org/schema/tx
      	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	
-	<context:annotation-config />
-	<context:component-scan base-package="com.rency.shop.web" />
-	
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<aop:aspectj-autoproxy />
+    <context:annotation-config />
+    <context:component-scan base-package="com.rency.shop.web" />
+    
+    <bean id="sessionFilter" class="com.rency.shop.web.filter.SessionFilter" />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="true">
+		<property name="ignoreResourceNotFound" value="true" />
 		<property name="locations">
 			<list>
 				<value>classpath:init.properties</value>
 			</list>
 		</property>
 	</bean>
-	
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${db.driver}"></property>
@@ -39,6 +42,23 @@
 		<property name="defaultAutoCommit" value="true"></property>
 	</bean>
 	
+	
+	
+	
+	
+	
+	
+	
+	<bean class="com.rency.shop.web.listener.ServletContextInitListener">
+        <property name="webResource" ref="webResource" />
+    </bean>
+    
+    <!-- web资源属性配置 -->
+    <bean id="webResource" class="com.rency.shop.web.WebDynamicResource">
+        <property name="version" value="${version}"/>
+        <property name="staticAddress" value="${staticAddress}" />
+        <property name="sysTitle" value="${sysTitle}" />
+    </bean>
 
 	<!-- 免登录URL -->
 	<bean id="freeUrls" class="com.rency.shop.web.entity.FreeURL">
@@ -49,16 +69,7 @@
 		</property>
 	</bean>
 	
-	<bean class="com.rency.shop.web.listener.ServletContextInitListener">
-        <property name="webResource" ref="webResource" />
-    </bean>
-
-    <bean id="webResource" class="com.rency.shop.web.WebDynamicResource">
-        <property name="version" value="${version}"/>
-        <property name="staticAddress" value="${staticAddress}" />
-    </bean>
-    
-    <!-- 用以生成验证码 -->
+	<!-- 用以生成验证码 -->
 	<bean id="kaptchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
         <property name="config">
             <bean class="com.google.code.kaptcha.util.Config">
@@ -82,7 +93,5 @@
             </bean>
         </property>
     </bean>
-    
-    <bean id="sessionFilter" class="com.rency.shop.web.filter.SessionFilter" />
 
 </beans>

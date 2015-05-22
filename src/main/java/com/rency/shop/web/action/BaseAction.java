@@ -1,7 +1,22 @@
 package com.rency.shop.web.action;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.rency.toolbox.common.SYSDICT;
+import org.rency.toolbox.exception.CoreException;
+import org.rency.toolbox.exception.Errors;
+import org.rency.toolbox.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.rency.shop.web.entity.User;
+import com.rency.shop.web.tools.Const;
 
 /**
  * 
@@ -9,6 +24,38 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class BaseAction {
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
     
+    protected User getUser(HttpServletRequest request) throws UserException {
+    	User user = (User) request.getSession().getAttribute(Const.SESSION_USER_KEY);
+    	if(user == null){
+    		logger.error("用户不存在");
+    		throw new UserException(Errors.USER_NOT_EXISTS);
+    	}
+		return user;
+	}
+    
+    /**
+     * 转发请求
+     * @param request
+     * @param response
+     * @param toUrl 待转发地址
+     * @param fromUrl 请求来源地址
+     * @throws CoreException
+     */
+    public static void forward(HttpServletRequest request,HttpServletResponse response,String toUrl,String fromUrl) throws CoreException{
+    	logger.info("转发请求至:"+toUrl);
+    	String url = "";
+        try {
+        	url = toUrl+"?"+SYSDICT.URL_PARAM_CALLBACK_KEY+URLEncoder.encode(fromUrl,SYSDICT.CHARSET);
+        	RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			logger.error("转发请求异常：地址{},{}",url,e);
+			throw new CoreException(e);
+		} catch (IOException e) {
+			logger.error("转发请求异常：地址{},{}",url,e);
+			throw new CoreException(e);
+		}
+    }
 }

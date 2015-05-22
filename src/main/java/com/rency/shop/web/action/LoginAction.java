@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.code.kaptcha.Producer;
 import com.rency.shop.web.entity.User;
+import com.rency.shop.web.tools.Const;
 
 @Controller
 @RequestMapping("/")
@@ -31,7 +32,20 @@ public class LoginAction {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/login.htm")
+	@RequestMapping("loginInput.htm")
+	public ModelAndView loginInput(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		logger.info("请求进入登录页面");
+        return new ModelAndView(Const.VIEW_SUFFIX_MAIN+"login");
+	}
+	
+	/**
+	 * 创建验证码图片
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("login.htm")
 	public ModelAndView login(HttpServletRequest request,HttpServletResponse response,User user) throws Exception{
         return null;
 	}

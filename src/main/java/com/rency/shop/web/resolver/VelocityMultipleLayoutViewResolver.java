@@ -24,6 +24,9 @@ public class VelocityMultipleLayoutViewResolver extends VelocityViewResolver {
 
 	@Override
 	protected AbstractUrlBasedView buildView(String viewName) throws Exception {
+		if(viewName.endsWith(".htm")){//不知为何会多出这个后缀，费解 ?????????
+			viewName = viewName.replace(".htm", "");
+		}
 		VelocityLayoutView view = (VelocityLayoutView) super.buildView(viewName);
 		if(!mappings.isEmpty()){
 			for(Map.Entry<String, String> entry : mappings.entrySet()){

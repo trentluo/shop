@@ -1,35 +1,3 @@
-<link href="${WEB_RESOURCE.staticAddress}enterpriseWallet/css/index.css${WEB_RESOURCE.staticVersion}" type="text/css" rel="stylesheet" media="screen">
-<style>
-	.ocx_style {
-	    border: 1px solid #7F9DB9;
-	    height: 32px;
-	    width: 222px;
-	}
-</style>
-<script>
- //密码控件js
- if(navigator.userAgent.indexOf("MSIE")<0){
-    navigator.plugins.refresh();
- }
- 
- var pgeditor = new jQuery.pge({
-  pgePath: "${WEB_RESOURCE.staticAddress}enterpriseWallet/ocx/",//控件文件目录  (个人的："${WEB_RESOURCE.staticAddress}wallet/ocx/")
-  pgeId: "_ocx_password",//控件ID
-  pgeEdittype: 0,//控件类型,0星号,1明文
-  pgeEreg1: "[\\s\\S]*",//输入过程中字符类型限制
-  pgeEreg2: "[\\s\\S]{6,12}", //输入完毕后字符类型判断条件
-  pgeMaxlength: 12,//允许最大输入长度
-  pgeTabindex: 2,//tab键顺序
-  pgeClass: "ocx_style",//控件css样式
-  pgeInstallClass: "ocx_style",//针对安装或升级
-  pgeOnkeydown:"FormSubmit()",//回车键响应函数
-     tabCallback:"login_captcha"
- });
- 
- window.onload = function(){ 
-    pgeditor.pgInitialize();//初始化控件
- }  
-</script>
 <div class="wrap">
 		<div class="exLonin-box">
               <div class="exLogin-main">
@@ -64,7 +32,7 @@
 		                  <!--<div class="login-line">
 		                       <label class="label-no" for="login-password">密码</label>
 		                       <div class="element pos_rel">
-		                       		#parse("main/ocx/password_login_per.vm")
+		                       		main/ocx/password_login_per
 		                       </div>
 						  </div>-->
 		                  <input type="hidden" id="captcha_value" name="captcha_value" />
@@ -74,7 +42,7 @@
 		                       <div class="element pos_rel">
 		                             <input type="text" class="login-text" name="login_captcha" id="login_captcha" placeholder="校验码" style="padding-left:0px;width:98px;" autocomplete="off" />
 		                             <span class="index_yzm marl10">
-		                             <img id="randImage" src="#springUrl('/pvc.htm')" style="cursor: pointer;" width="102" height="34" onclick="reloadcode();" /></span>
+		                             <img id="randImage" src="#springUrl('/captcha-image.htm')" style="cursor: pointer;" width="102" height="34" onclick="reloadcode();" /></span>
 		                             <div class="clear"></div>
 		                       </div>
 		                  </div>
