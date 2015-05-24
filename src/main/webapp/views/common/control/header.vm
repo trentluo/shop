@@ -1,21 +1,24 @@
-<!--已登录头部-->
+<!--头部-->
 #parse("/common/control/ie6.vm")
 <div class="header">
 	<div class="top_nav">
     	<div class="wrap">
         <span class="fc_c fr">
-        	#if($response.data.member.memberName)
-       			 <i class="fc_6">你好，$!response.data.member.memberName</i> <a href="#springUrl('/logout.htm')" class="a">退出</a>
+        	#if($session.getAttribute("_current_user"))
+        		<i class="fc_6">你好，$session.getAttribute("_current_user").username</i> <a href="#springUrl('/logout.htm')" class="a">退出</a>
+        	#else
+        	<a href="#springUrl('/loginInput.htm')" class="a">登录</a>
+        	|<a href="#springUrl('/regInput.htm')" class="a">注册</a>
         	#end
-        |<a href="#springUrl('/my/home.htm')" class="a">我的钱包</a>
-        |<a href="#" class="a" target="view_windowbz">帮助中心</a></span>
+        	|<a href="#springUrl('/home.htm')" class="a">我的钱包</a>
+        	|<a href="#" class="a" target="view_windowbz">帮助中心</a></span>
         </div>
     </div>
     <div class="logo_nav"><!--<img src="${WEB_RESOURCE.staticAddress}wallet/image/logo_online.png">-->
         <h1 class="logo"><a href="#springUrl('/my/home.htm')"><img src="${WEB_RESOURCE.staticAddress}enterpriseWallet/image/logo_online.png"></a></h1>
     	<ul class="nav">
             <li class="nav_li">
-            	<a class="a_nav" href="#springUrl('/my/home.htm')">我的钱包</a>|
+            	<a class="a_nav" href="#springUrl('/home.htm')">我的钱包</a>|
             </li>
             <li class="nav_li">
                 <a class="a_nav" href="#springUrl('/my/all-trade.htm')">交易记录</a>|

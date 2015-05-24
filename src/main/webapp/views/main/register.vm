@@ -31,7 +31,7 @@
 		                       </div>
 		                  </div>
 		                  <div class="login-line">
-		                       <input id="normalSubmit" class="btn-settlement" type="submit" value="登 录">
+		                       <a class="qianbao-main" title="登录" id="user_login_submit" href="javascript:void(0)" onclick="return userLoginSubmit();">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
 		                  </div>							   
 		      		</from>
               </div>

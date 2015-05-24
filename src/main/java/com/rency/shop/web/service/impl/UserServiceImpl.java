@@ -1,6 +1,6 @@
 package com.rency.shop.web.service.impl;
 
-import org.rency.toolbox.exception.CoreException;
+import org.rency.commons.toolbox.exception.CoreException;
 import org.springframework.stereotype.Service;
 
 import com.rency.shop.web.entity.User;

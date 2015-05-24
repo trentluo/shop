@@ -2,19 +2,24 @@ package com.rency.shop.web.action;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.rency.toolbox.common.SYSDICT;
-import org.rency.toolbox.exception.CoreException;
-import org.rency.toolbox.exception.Errors;
-import org.rency.toolbox.exception.UserException;
+import org.apache.commons.lang.StringUtils;
+import org.rency.commons.toolbox.common.SYSDICT;
+import org.rency.commons.toolbox.enums.Errors;
+import org.rency.commons.toolbox.exception.CoreException;
+import org.rency.commons.toolbox.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.rency.shop.web.entity.RespBody;
 import com.rency.shop.web.entity.User;
 import com.rency.shop.web.tools.Const;
 
@@ -25,6 +30,20 @@ import com.rency.shop.web.tools.Const;
  */
 public class BaseAction {
     protected static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
+    
+    protected RespBody respBody = new RespBody();
+    protected Map<String, Object> respData = new HashMap<String, Object>();
+    
+    public BaseAction(){
+    	respBody.setSuccess(true);
+    	respBody.setMessage("");
+    	respBody.setRespData(respData);
+    }
+    
+    protected ModelAndView view(String url){
+    	ModelAndView mv = new ModelAndView(url,"resp",respBody);
+    	return mv;
+    }
     
     protected User getUser(HttpServletRequest request) throws UserException {
     	User user = (User) request.getSession().getAttribute(Const.SESSION_USER_KEY);
@@ -47,7 +66,9 @@ public class BaseAction {
     	logger.info("转发请求至:"+toUrl);
     	String url = "";
         try {
-        	url = toUrl+"?"+SYSDICT.URL_PARAM_CALLBACK_KEY+URLEncoder.encode(fromUrl,SYSDICT.CHARSET);
+        	if(StringUtils.isNotBlank(fromUrl)){
+        		url = toUrl+"?"+SYSDICT.URL_PARAM_CALLBACK_KEY+URLEncoder.encode(fromUrl,SYSDICT.CHARSET);
+        	}
         	RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 		} catch (ServletException e) {

@@ -42,13 +42,6 @@
 		<property name="defaultAutoCommit" value="true"></property>
 	</bean>
 	
-	
-	
-	
-	
-	
-	
-	
 	<bean class="com.rency.shop.web.listener.ServletContextInitListener">
         <property name="webResource" ref="webResource" />
     </bean>
@@ -65,6 +58,7 @@
 		<property name="freeUrls">
 			<list>
 				<value>loginInput.htm</value>
+				<value>captcha-image.htm</value>
 			</list>
 		</property>
 	</bean>

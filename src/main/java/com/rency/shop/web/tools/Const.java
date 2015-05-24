@@ -14,6 +14,8 @@ public class Const {
 	
 	public static final String SESSION_USER_KEY = "user";
 	
+	public static final String VIEW_SUFFIX_LOGIN = "login/";
+	
 	public static final String VIEW_SUFFIX_MAIN = "main/";
 	
 	public static final String VIEW_SUFFIX_COMMON = "common/";

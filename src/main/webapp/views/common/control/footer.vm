@@ -4,7 +4,7 @@
             <p><a href="#" target="view_windowqb">关于我们</a>
             | <a href="#" target="view_windowlx">联系我们</a>
             | <a href="#" target="view_windowdt">网站地图</a>
-            | <a href="#" target="view_windowwz">口袋网</a>
+            | <a href="#" target="view_windowwz">${WEB_RESOURCE.sysTitle}</a>
              ${WEB_RESOURCE.sysTitle}包版权所有Copyright @ 2014 沪ICP备14000170号</p>
         </div>
     </div>

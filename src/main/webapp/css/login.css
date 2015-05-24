@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+/* 登录 */
+.exLonin-box{text-align:right;}
+.exLogin-main{text-align:left;max-width:300px;margin-left:auto;}
+.exLogin-tit{}
+.login-line{}
+.label-no{}
+.btn-settlement{background-color:#d00;border-radius:5px;color:#fff;cursor:pointer;display:inline-block;float:left;font-family:"Microsoft YaHei";font-size:16px;height:40px;line-height:40px;text-align:center;width:270px;}

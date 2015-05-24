@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>${WEB_RESOURCE.sysTitle}</title>
+    <title>#if($page_title) $page_title #else ${WEB_RESOURCE.sysTitle} #end</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="${WEB_RESOURCE.staticAddress}/css/common.css.css${WEB_RESOURCE.staticVersion}" rel="stylesheet" media="screen"  id="theme_date">
+    <link href="${WEB_RESOURCE.staticAddress}/css/bootstrap/bootstrap.min.css?${WEB_RESOURCE.version}" rel="stylesheet" media="screen"  id="theme_date">
+    <script src="${WEB_RESOURCE.staticAddress}/script/jquery-2.1.4.min.js?${WEB_RESOURCE.version}"></script>
     <!--[if lt IE 9]>
-      <script src="${WEB_RESOURCE.staticAddress}/js/html5shiv.js${WEB_RESOURCE.staticVersion}"></script>
+      <script src="${WEB_RESOURCE.staticAddress}/js/html5shiv.js?${WEB_RESOURCE.version}"></script>
     <![endif]-->
 </head>
 <body>

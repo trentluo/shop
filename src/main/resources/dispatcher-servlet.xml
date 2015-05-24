@@ -61,9 +61,7 @@
                     <property name="exposeSpringMacroHelpers" value="true" />
                     <property name="mappings">
                         <map>
-                            <!-- 个性化布局在此添加 -->
-                            <entry key="login*" value="common/layout/login-layout.vm" />
-                            <!-- 默认布局 -->
+                            <entry key="login/*" value="common/layout/login-layout.vm" />
                             <entry key="main/*" value="common/layout/default-layout.vm" />
                             <entry key="common/*" value="common/layout/default-layout.vm" />
                         </map>
