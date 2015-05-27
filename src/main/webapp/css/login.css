@@ -1,8 +1,65 @@
 @CHARSET "UTF-8";
 /* 登录 */
-.exLonin-box{text-align:right;}
-.exLogin-main{text-align:left;max-width:300px;margin-left:auto;}
-.exLogin-tit{}
-.login-line{}
-.label-no{}
-.btn-settlement{background-color:#d00;border-radius:5px;color:#fff;cursor:pointer;display:inline-block;float:left;font-family:"Microsoft YaHei";font-size:16px;height:40px;line-height:40px;text-align:center;width:270px;}
+
+.login_body{ background:#fbfdff; }
+
+
+.login-header{ height:100px; }
+.login-header .top_nav{ height:27px; line-height:27px; background-color:#f4f6f8; border-bottom:1px solid #e7eaef;}
+.login-header .top_nav .a{margin-right:10px; margin-left:10px; color:#666;}
+.login-header .top_nav .a:hover{ color:#a40000;}
+.login-header .logo_nav{ position:relative; margin:0 auto; z-index:1000; width:1000px; height:83px; color:#ddd; font-size:14px;}
+.login-header .logo_nav .nav{ position:absolute; top:44px; right:0; height:35px; line-height:30px;}
+.login-header .logo_nav a.a_nav{ margin:0 15px; font-weight:bold; color:#666666;}
+.login-header .logo_nav a.a_nav:hover{ color:#a40000; text-decoration:none;}
+.login-header .logo{ position:absolute; top:20px; left:20px; color:#ccc;}
+
+
+
+.login-box{ width:938px; padding:30px; margin:10px 0 30px 0; background:#FFF; -moz-box-shadow:5px 5px #e4e6e9; -webkit-box-shadow:5px 5px #e4e6e9; box-shadow:5px 5px #e4e6e9; border:1px solid #d6d6d6; position:relative; }
+.login-box .tit{ width:100%; height:45px; border-bottom:1px solid #d6d6d6; font-family:"微软雅黑"; font-size:24px; color:#666; }
+.login-box .tit span{ display:block; float:left; height:44px; line-height:45px; padding:0 20px;}
+.login-box .tit span.selectde{ border-bottom:2px solid #c10000; }
+
+.from{ margin:40px 20px 70px 20px; width:100%; }
+
+.from .lg_p { height:32px; line-height:32px; margin-left:32px; padding-left: 0; display:block; }
+.from .lab { float:left; width:115px; height:32px; line-height:32px; overflow:hidden;  font-size:14px; white-space:nowrap; text-align:right; padding-right:5px; }
+.from .lab i { color: #FF0800; font-style: normal; padding:0 5px; }
+.from .text { width:231px; height:28px;  line-height:28px; float:left; border-color:#A1ADB9 #E2E2E2 #E2E2E2 #A1ADB9; border-style: solid; border-width: 1px; box-shadow: 1px 1px 1px #CCCCCC inset; color: #999999; font-size: 14px; overflow: hidden; padding: 1px 2px; vertical-align: middle; border-radius:0; }
+
+.authcode .text { width: 125px; }
+.authcode .auth-img { display:inline; }
+
+.newregwide { padding-left:151px; }
+
+.pr { position: relative; }
+
+.pr20 {padding-right: 20px; }
+
+.lg_p .getcodebutton { background: url(../image/repeat_getcode.gif) repeat-x; border-color:#BCBCBC; border-image: none; border-style: none none none solid; border-width: 0 0 0 1px; color: #343434;
+display: inline-block; height: 30px; left: 243px; line-height: 30px; position: absolute; text-align: center; top: 1px; width: 112px; z-index: 99; }
+.lg_p .getcodebutton:hover{ text-decoration:none; }
+
+.lg_btn{ height:32px; display:block; }
+.sub_style { display:block;  width:86px; height:30px; line-height:30px; background: url(../image/btn.jpg) 0 0 no-repeat; border: 0 none; color: #FFFFFF; cursor: pointer; font-size: 14px; font-weight: 700; text-align:center; }
+.sub_style:hover{ color: #FFFFFF; text-decoration:underline; }
+#submit_loading { display:block; width:71px; height:30px; line-height:30px; background:url(../image/btn.jpg) no-repeat 0 -167px ; color:#2DA300; font-style:normal; padding-left:15px; display:none; }
+
+
+.warn, .ok, .error, .g_warn { display: inline-block; height: 24px; line-height: 24px; padding: 0 10px 0 25px; vertical-align: middle; }
+.error {}
+.ok {}
+.warn { background: url(../image/warn.png) no-repeat scroll 7px 6px #E6F9FF; border: 1px solid #B4E1EF; color: #666666; }
+.mb30 { margin-bottom:30px !important; }
+.mb20 { margin-bottom:20px !important; }
+.mb10 { margin-bottom:10px !important; }
+.mg6lf{ margin-left:6px; }
+
+.login_has{font-size: 14px; width: 210px; height: 20px; position: absolute; right: 150px; top:300px;}
+
+
+.exLonin-box{ width:840px; height:365px; background:url(../images/ex-bg.jpg) no-repeat; margin:10px 0 80px 0; position:relative; }
+.exLogin-main { width:266px; height:322px; position:absolute; right:7px; top:33px; }
+.exLogin-tit{ height:40px; font-size:22px; font-family:"微软雅黑"; color:#666;  }
+.exLogin-main .select{ border-radius:0; width:223px; height:32px; border: 1px solid #B7B7B7; }

@@ -31,7 +31,7 @@ public class LoginAction extends BaseAction{
 		logger.info("请求进入登录页面");
 		String fromUrl = request.getParameter(SYSDICT.URL_PARAM_CALLBACK_KEY);
 		respData.put(SYSDICT.URL_PARAM_CALLBACK_KEY, fromUrl);
-        return view(Const.VIEW_SUFFIX_MAIN+"login");
+        return view("login");
 	}
 	
 	/**

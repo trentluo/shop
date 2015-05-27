@@ -2,26 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
   
-<mapper namespace="com.lm.mapping.UserMapper">  
-    <resultMap id="userEntityMapper" type="UserEntity">  
-        <id property="userId" column="userId" />  
-        <result property="userName" column="userName" />  
-        <result property="password" column="password" />  
-        <result property="sex" column="sex" />  
-        <result property="email" column="email" />  
+<mapper namespace="com.rency.shop.web.entity.User">  
+    <resultMap id="userMapper" type="User">  
+        <id property="uuid" column="UUID" jdbcType="VARCHAR"/>  
+        <result property="username" column="USERNAME" jdbcType="VARCHAR"/>  
+        <result property="passwd" column="PASSWD" jdbcType="VARCHAR"/>  
+        <result property="email" column="EMAIL" jdbcType="VARCHAR"/>  
+        <result property="mobile" column="MOBILE" jdbcType="VARCHAR"/>
+        <result property="userType" column="USERTYPE" jdbcType="BIGINT"/>
+        <result property="userStatus" column="USERSTATUS" typeHandler="com.rency.shop.web.enums.UserStatusTypeHandler" />
+        <result property="currLogin" column="CURRLOGIN" jdbcType="TIMESTAMP"/>
+        <result property="lastLogin" column="LASTLOGIN" jdbcType="TIMESTAMP"/>    
+        <result property="createDate" column="CREATEDATE" jdbcType="TIMESTAMP"/>  
+        <result property="updateDate" column="UPDATEDATE" jdbcType="TIMESTAMP"/>    
+        <result property="extention" column="EXTENTION" jdbcType="VARCHAR"/>
     </resultMap>  
-      
-    <select id="getUserEntityById" parameterType="String" resultMap="userEntityMapper">  
-        select * from user where userid=#{param1}     
-    </select>  
-      
-    <select id="getUserEntities" resultMap="userEntityMapper">  
-        select * from user   
-    </select>  
-      
-    <insert id="insertUser" parameterType="userEntity">  
-        insert into user(userId,userName,password,sex,email)   
-        values(#{userEntity.userId},#{userEntity.userName},#{userEntity.password},#{userEntity.sex},#{userEntity.email})  
+    
+    <select id="get" parameterType="String" resultMap="userMapper">  
+        select * from user where uuid=#{uuid}     
+    </select>
+     
+    <insert id="insert" parameterType="User">  
+        INSERT INTO t_user(UUID,USERNAME,PASSWD,EMAIL,MOBILE,USERTYPE,USERSTATUS,CUURLOGIN,LASTLOGIN,CREATEDATE,UPDATEDATE,EXTENSION)
+		VALUES (#{UUID},#{USERNAME},#{PASSWD},#{EMAIL},#{MOBILE},#{USERTYPE},#{USERSTATUS},#{CUURLOGIN},#{LASTLOGIN},#{CREATEDATE},#{UPDATEDATE},#{EXTENSION});
     </insert>  
+    
+    <update id="update">
+    	
+    </update>
+    
+    <delete id="delete">
+    
+    </delete>
+    
+    <delete id="deleteById" parameterType="String">
+    	DELETE FROM t_user WHERE uuid=#{uuid}
+    </delete>
       
 </mapper>

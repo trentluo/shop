@@ -67,7 +67,7 @@ public class BaseAction {
     	String url = "";
         try {
         	if(StringUtils.isNotBlank(fromUrl)){
-        		url = toUrl+"?"+SYSDICT.URL_PARAM_CALLBACK_KEY+URLEncoder.encode(fromUrl,SYSDICT.CHARSET);
+        		url = toUrl+SYSDICT.URL_PARAM_CALLBACK_KEY+URLEncoder.encode(fromUrl,SYSDICT.CHARSET);
         	}
         	RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

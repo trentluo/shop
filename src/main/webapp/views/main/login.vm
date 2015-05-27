@@ -53,7 +53,10 @@
 	});
 	
 	$("#userEmail").blur(function(){
-       	var manageUser = $.trim($("#userEmail").val());  
+       	var manageUser = $.trim($("#userEmail").val());
+       	if(manageUser == null || manageUser == ''){
+       		return;
+       	}  
        	var regPattern_email = /^(\w)+(\.\w+)*@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
 		if(!regPattern_email.test(manageUser)) {
         	$("#login_error_msg").html('登录用户名不正确!');

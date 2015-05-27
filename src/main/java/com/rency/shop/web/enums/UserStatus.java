@@ -1,4 +1,4 @@
-package com.rency.shop.web.tools;
+package com.rency.shop.web.enums;
 
 public enum UserStatus {
 	ACTIVED(1,"激活"),

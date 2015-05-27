@@ -3,7 +3,7 @@ package com.rency.shop.web.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.rency.shop.web.tools.UserStatus;
+import com.rency.shop.web.enums.UserStatus;
 
 public class User implements Serializable {
 
@@ -17,9 +17,13 @@ public class User implements Serializable {
 	private String passwd;
 	private String email;
 	private String mobile;
+	private int userType;
 	private UserStatus userStatus;
+	private Date currLogin;
+	private Date lastLogin;
 	private Date createDate;
 	private Date updateDate;
+	private String extention;
 
 	public String getUuid() {
 		return uuid;
@@ -61,12 +65,36 @@ public class User implements Serializable {
 		this.mobile = mobile;
 	}
 
+	public int getUserType() {
+		return userType;
+	}
+
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+
 	public UserStatus getUserStatus() {
 		return userStatus;
 	}
 
 	public void setUserStatus(UserStatus userStatus) {
 		this.userStatus = userStatus;
+	}
+
+	public Date getCurrLogin() {
+		return currLogin;
+	}
+
+	public void setCurrLogin(Date currLogin) {
+		this.currLogin = currLogin;
+	}
+
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
 	}
 
 	public Date getCreateDate() {
@@ -83,5 +111,29 @@ public class User implements Serializable {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public String getExtention() {
+		return extention;
+	}
+
+	public void setExtention(String extention) {
+		this.extention = extention;
+	}
+	
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("{");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("username:"+username).append(",");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("uuid:"+uuid).append(",");
+		builder.append("}");
+		return builder.toString();
 	}
 }

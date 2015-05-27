@@ -34,13 +34,31 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${db.driver}"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/${db.name}?useUnicode=true&amp;characterEncoding=utf8"></property>
-		<property name="username" value="${db.username}"></property>
-		<property name="password" value="${db.password}"></property>
-		<property name="maxActive" value="100"></property>
-		<property name="maxIdle" value="30"></property>
-		<property name="maxWait" value="500"></property>
-		<property name="defaultAutoCommit" value="true"></property>
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<property name="maxActive" value="100" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="500" />
+		<property name="defaultAutoCommit" value="true" />
 	</bean>
+	
+	<!-- 集成mybatis -->  
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+    	<property name="dataSource" ref="dataSource" />  
+    	<property name="configLocation" value="classpath:mybatis.xml" />
+    	<property name="mapperLocations" value="classpath*:sqlmap/**/*-Mapper.xml" />
+    	<property name="typeAliasesPackage" value="com.rency.shop.web.entity" /> 
+	</bean> 
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+       <property name="basePackage" value="com.rency.shop.web.dao" />
+       <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>  
+    </bean> 
+	  
+	<!-- 配置事务 -->  
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+    	<property name="dataSource" ref="dataSource" />  
+	</bean>  
 	
 	<bean class="com.rency.shop.web.listener.ServletContextInitListener">
         <property name="webResource" ref="webResource" />

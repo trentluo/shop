@@ -329,8 +329,8 @@
   	</dependency>
 
   	<dependency>
-  		<groupId>org.rency.commons</groupId>
-  		<artifactId>toolbox</artifactId>
+  		<groupId>org.rency</groupId>
+  		<artifactId>commons-api</artifactId>
   		<version>1.0.0-SNAPSHOT</version>
   	</dependency>
   </dependencies>
