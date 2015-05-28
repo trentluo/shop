@@ -10,6 +10,8 @@ public interface UserService {
 
 	public User get(String uuid) throws CoreException;
 	
+	public User queryByEmail(String email) throws CoreException;
+	
 	public boolean save(User user) throws CoreException;
 	
 	public boolean update(User user) throws CoreException;

@@ -126,13 +126,15 @@ public class User implements Serializable {
 		builder.append("{");
 		builder.append("uuid:"+uuid).append(",");
 		builder.append("username:"+username).append(",");
-		builder.append("uuid:"+uuid).append(",");
-		builder.append("uuid:"+uuid).append(",");
-		builder.append("uuid:"+uuid).append(",");
-		builder.append("uuid:"+uuid).append(",");
-		builder.append("uuid:"+uuid).append(",");
-		builder.append("uuid:"+uuid).append(",");
-		builder.append("uuid:"+uuid).append(",");
+		builder.append("email:"+email).append(",");
+		builder.append("mobile:"+mobile).append(",");
+		builder.append("userType:"+userType).append(",");
+		builder.append("userStatus:"+userStatus.getValue()).append(",");
+		builder.append("currLogin:"+currLogin).append(",");
+		builder.append("lastLogin:"+lastLogin).append(",");
+		builder.append("createDate:"+createDate).append(",");
+		builder.append("updateDate:"+updateDate).append(",");
+		builder.append("extention:"+extention).append(",");
 		builder.append("}");
 		return builder.toString();
 	}

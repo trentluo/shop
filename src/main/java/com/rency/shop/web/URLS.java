@@ -15,6 +15,8 @@ public enum URLS {
     LONGIN("登录页面", "/loginInput.htm"),
 
     ERROR("错误页面", "/common/exception/error"),
+    
+    LOGOUT("注销页面", "/logout.htm"),
 
     ;
 

@@ -1,0 +1,25 @@
+<!--头部-->
+#parse("/common/control/ie6.vm")
+<div class="header">
+	<div class="top_nav">
+    	<div class="wrap">
+        <span class="fc_c fr">
+        	#if($session.getAttribute("_current_user"))
+        		<i class="fc_6">你好，$session.getAttribute("_current_user").username</i> <a href="#springUrl('/logout.htm')" class="a">退出</a>
+        	#else
+        	<a href="#springUrl('/loginInput.htm')" class="a">登录</a>
+        	|<a href="#springUrl('/regInput.htm')" class="a">注册</a>
+        	#end
+        	|<a href="#springUrl('/home.htm')" class="a">我的钱包</a>
+        	|<a href="#" class="a" target="view_windowbz">帮助中心</a></span>
+        </div>
+    </div>
+</div>
+<script>
+$(function(){
+	$(".nav_li").hover(
+		function(){$(this).find(".sl-shadow").show();$(this).find(".angle").show();},
+		function(){$(this).find(".sl-shadow").hide();$(this).find(".angle").hide();}
+	);
+})
+</script>

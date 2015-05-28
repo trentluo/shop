@@ -47,14 +47,13 @@ public class SessionFilter implements Filter, InitializingBean{
 
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest request = (HttpServletRequest) servletRequest;
+		HttpSession session = request.getSession();
+		HttpServletResponse response = (HttpServletResponse) servletResponse;
+		String url = request.getRequestURI().toString();
+		logger.info("进入用户过滤器，过滤地址："+url);
 		try{
-			HttpServletRequest request = (HttpServletRequest) servletRequest;
-	        HttpSession session = request.getSession();
 	        User user = (User) session.getAttribute(Const.SESSION_USER_KEY);
-	        HttpServletResponse response = (HttpServletResponse) servletResponse;
-	        
-	        String url = request.getRequestURI().toString();
-	        logger.info("进入用户过滤器，过滤地址："+url);
 	        
 	        //判断用户是否需要登录
 	        if(isInclude(url)){
@@ -72,6 +71,7 @@ public class SessionFilter implements Filter, InitializingBean{
 		}catch(Exception e){
 			logger.error("系统未知异常.",e);
 			e.printStackTrace();
+			
 		}
 	}
 

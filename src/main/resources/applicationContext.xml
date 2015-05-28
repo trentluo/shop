@@ -76,7 +76,11 @@
 		<property name="freeUrls">
 			<list>
 				<value>loginInput.htm</value>
+				<value>login.htm</value>
 				<value>captcha-image.htm</value>
+				<value>regInput.htm</value>
+				<value>reg.htm</value>
+				<value>valid.htm</value>
 			</list>
 		</property>
 	</bean>

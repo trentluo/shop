@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
 	public User get(String uuid) throws CoreException {
 		return userDao.get(uuid);
 	}
+	
+	@Override
+	public User queryByEmail(String email) throws CoreException {
+		return userDao.findByEmail(email);
+	}
 
 	@Override
 	public boolean save(User user) throws CoreException {

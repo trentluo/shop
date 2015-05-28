@@ -7,6 +7,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,7 @@ public class KaptchaImageCreateAction {
 	 */
 	public static boolean validateRandCode(HttpServletRequest request,String randCode)throws Exception {
 		logger.info("kaptcha validate:" + request.getSession().getAttribute(Const.SESSION_KAPTCHA_KEY));
-		if (randCode == null || !randCode.equals(request.getSession().getAttribute(Const.SESSION_KAPTCHA_KEY))) {
+		if (StringUtils.isBlank(randCode) || !randCode.equals(request.getSession().getAttribute(Const.SESSION_KAPTCHA_KEY))) {
 			return false;
 		}
 		return true;

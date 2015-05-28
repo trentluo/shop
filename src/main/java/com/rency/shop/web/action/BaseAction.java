@@ -37,7 +37,7 @@ public class BaseAction {
     public BaseAction(){
     	respBody.setSuccess(true);
     	respBody.setMessage("");
-    	respBody.setRespData(respData);
+    	respBody.setData(respData);
     }
     
     protected ModelAndView view(String url){
@@ -45,6 +45,12 @@ public class BaseAction {
     	return mv;
     }
     
+    /**
+     * 获取当前登录用户
+     * @param request
+     * @return
+     * @throws UserException
+     */
     protected User getUser(HttpServletRequest request) throws UserException {
     	User user = (User) request.getSession().getAttribute(Const.SESSION_USER_KEY);
     	if(user == null){
@@ -52,6 +58,16 @@ public class BaseAction {
     		throw new UserException(Errors.USER_NOT_EXISTS);
     	}
 		return user;
+	}
+    
+    /**
+     * 设置当前登录用户
+     * @param request
+     * @return
+     * @throws UserException
+     */
+    protected void setUser(HttpServletRequest request,User user) throws UserException {
+    	request.getSession().setAttribute(Const.SESSION_USER_KEY,user);
 	}
     
     /**

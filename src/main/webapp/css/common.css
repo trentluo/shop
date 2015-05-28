@@ -103,7 +103,7 @@ input.ie6_radio{ _width:20px !important;}
 .pos_abs{ position:absolute;}
 .l-hg30{ line-height:30px; }
 .indent{ text-indent:999px; overflow:hidden; }
-
+.clear { clear:both;}
 
 /*按钮*/
 .btn_h24{ display:inline-block; padding:0 16px; height:22px; line-height:23px;  font-size:12px; text-align:center; background:url(../image/btn_bg.png) 0 -63px repeat-x; border:1px solid #bbbbbb; border-radius:3px; cursor:pointer;}

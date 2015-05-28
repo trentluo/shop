@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 公共页面返回
+ * 返回
 * @ClassName: RespBody 
 * @Description: TODO
 * @Author user_rcy@163.com
@@ -22,7 +22,7 @@ public class RespBody implements Serializable {
 	private String callback;
 	private boolean success;
 	private String message;
-	private Map<String, Object> respData = new HashMap<String, Object>();
+	private Map<String, Object> data = new HashMap<String, Object>();
 	public String getCallback() {
 		return callback;
 	}
@@ -41,10 +41,10 @@ public class RespBody implements Serializable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public Map<String, Object> getRespData() {
-		return respData;
+	public Map<String, Object> getData() {
+		return data;
 	}
-	public void setRespData(Map<String, Object> respData) {
-		this.respData = respData;
+	public void setData(Map<String, Object> data) {
+		this.data = data;
 	}
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
   
-<mapper namespace="com.rency.shop.web.entity.User">  
+<mapper namespace="com.rency.shop.web.dao.UserDao">  
     <resultMap id="userMapper" type="User">  
         <id property="uuid" column="UUID" jdbcType="VARCHAR"/>  
         <result property="username" column="USERNAME" jdbcType="VARCHAR"/>  
@@ -19,7 +19,11 @@
     </resultMap>  
     
     <select id="get" parameterType="String" resultMap="userMapper">  
-        select * from user where uuid=#{uuid}     
+        select * from t_user where uuid=#{uuid}
+    </select>
+    
+    <select id="findByEmail" parameterType="String" resultMap="userMapper">
+    	select * from t_user where EMAIL=#{email}
     </select>
      
     <insert id="insert" parameterType="User">  

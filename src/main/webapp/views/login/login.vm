@@ -1,0 +1,118 @@
+#set($page_title = '账户登录')
+<div class="wrap">
+	<div class="exLonin-box">
+    	<div class="exLogin-main">
+        	<P class="exLogin-tit">账户登录</P>
+        	<form id="loginForm" class="" action="" method="POST">
+            	<div class="login-line mart10" style="display:none;" id="login_error_msg_parent">
+           			<label class="label-no" for="login-user">提示</label>
+           			<div class="element pos_rel">
+                 		<p class="index_longin_tips warn" id="login_error_msg" style="margin-left:0px;">密码错误</p>
+                 		<div class="clear"></div>
+                 	</div>
+           		</div>
+		        <input type="hidden" name="callback_url" id="callback_url" value="$!resp.callback"/>
+         		<div class="login-line">
+               		<div class="element pos_rel">
+                    	<input type="text" class="login-text login-icon-user" name="manageUser" id="userEmail" placeholder="请输入邮箱" autocomplete="off" maxlength="50"  style="padding-left:0px;width:219px;" />
+                    	<div class="clear"></div>
+               		</div>
+          		</div>
+          		<div class="login-line">
+               		<div class="element pos_rel">
+                    	<input type="password" class="login-text login-icon-password" name="passwd" id="login_passwd" placeholder="请输入密码" style="padding-left:0px;width:219px;" autocomplete="off" />
+                    	<div class="clear"></div>
+               		</div>
+          		</div>
+          		<div class="login-line">
+               		<div class="element pos_rel">
+                    	<input type="text" class="login-text" name="captchaValue" id="login_captcha" placeholder="校验码" style="padding-left:0px;width:98px;" autocomplete="off" />
+                    	<span class="index_yzm marl10">
+                    	<img id="randImage" src="#springUrl('/captcha-image.htm')" style="cursor: pointer;" width="102" height="34" onclick="reloadcode();" /></span>
+                    	<div class="clear"></div>
+               		</div>
+          		</div>
+          		<div class="login-line">
+               		<a id="user_login_submit" class="login-btn" onclick="return userLoginSubmit();" href="javascript:void(0)" title="登录">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</a>
+          		</div>							   
+  			</from>
+      	</div>
+     </div>
+</div>     
+    
+
+<script type="text/javascript">
+function reloadcode() {
+   	$("#randImage").attr("src","#springUrl('/captcha-image.htm')?id="+Math.random());
+}
+
+$("#login_captcha").blur(function(){
+	var login_captcha = $.trim($("#login_captcha").val());
+	if(login_captcha.length != 4){
+		$("#login_error_msg").html('请输入4位的验证码!');
+    	$("#login_error_msg_parent").show();
+		return false;
+	}
+}
+	
+$("#userEmail").blur(function(){
+   	var userEmail = $.trim($("#userEmail").val());
+   	if(userEmail.length==0){
+   		return;
+   	}  
+   	var regPattern_email = /^(\w)+(\.\w+)*@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
+	if(!regPattern_email.test(userEmail)) {
+    	$("#login_error_msg").html('登录用户名不正确!');
+    	$("#login_error_msg_parent").show();
+    	reloadcode();
+    	$("#user_login_submit").attr("disabled", "disabled");
+		return false;
+	}else{
+		$("#login_error_msg_parent").hide();
+		$("#user_login_submit").removeAttr("disabled");
+	}
+});	
+	
+//表单提交
+function userLoginSubmit() {
+	var userEmail = $.trim($("#userEmail").val());    
+    if(userEmail.length==0) {
+    	$("#login_error_msg").html('登录用户名不能为空!');
+    	$("#login_error_msg_parent").show();
+		return false;
+    }
+    
+    var regPattern_email = /^(\w)+(\.\w+)*@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
+	if(!regPattern_email.test(userEmail)) {
+    	$("#login_error_msg").html('登录用户名不正确!');
+    	$("#login_error_msg_parent").show();
+		return false;
+	}
+	
+	var login_captcha = $.trim($("#login_captcha").val());
+	if (login_captcha.length==0) {
+    	$("#login_error_msg").html('验证码不能为空!');
+    	$("#login_error_msg_parent").show();
+		return false;
+	}
+	
+    jQuery.ajax({
+		url:"#springUrl('/login.htm')",
+		type:'post',
+		dataType:'json',
+		data:$("#loginForm").serialize(),
+		success:function(data, textStatus, jqXHR){
+			if(data.success) {
+				window.location.href = data.callback;
+            } else {
+            	$("#login_error_msg").html(data.message);
+            	$("#login_error_msg_parent").show();
+            	reloadcode();
+			}
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			return false;
+		}
+	});
+};
+</script>

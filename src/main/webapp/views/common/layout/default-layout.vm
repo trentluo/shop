@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>#if($page_title) $page_title #else ${WEB_RESOURCE.sysTitle} #end</title>
+    <title>#if($page_title) $page_title - ${WEB_RESOURCE.sysTitle} #else ${WEB_RESOURCE.sysTitle} #end</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
