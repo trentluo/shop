@@ -1,7 +1,9 @@
 package com.rency.shop.web.action;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URLEncoder;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +19,8 @@ import org.rency.commons.toolbox.exception.CoreException;
 import org.rency.commons.toolbox.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rency.shop.web.entity.RespBody;
@@ -28,16 +32,22 @@ import com.rency.shop.web.tools.Const;
  * @author rencaiyu
  *
  */
-public class BaseAction {
-    protected static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
+public class BaseAction implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
     
-    protected RespBody respBody = new RespBody();
-    protected Map<String, Object> respData = new HashMap<String, Object>();
+    protected final RespBody respBody = new RespBody();
+    protected final Map<String, Object> respData = new HashMap<String, Object>();
     
     public BaseAction(){
     	respBody.setSuccess(true);
     	respBody.setMessage("");
     	respBody.setData(respData);
+    	respBody.setCallback("");
     }
     
     protected ModelAndView view(String url){

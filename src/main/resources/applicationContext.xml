@@ -109,5 +109,14 @@
             </bean>
         </property>
     </bean>
+    
+    <bean id="loggedInterceptor" class="com.rency.shop.web.interceptors.LoggedInterceptor" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">    
+    	<property name="interceptors">    
+        	<list>    
+            	<ref bean="loggedInterceptor"/>    
+        	</list>    
+    	</property>    
+	</bean> 
 
 </beans>
