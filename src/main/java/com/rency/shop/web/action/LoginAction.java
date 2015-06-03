@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.rency.commons.toolbox.common.SYSDICT;
 import org.rency.commons.toolbox.utils.DateUtils;
+import org.rency.commons.toolbox.utils.KaptchaUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ import com.rency.shop.web.tools.Const;
 @RequestMapping("")
 public class LoginAction extends BaseAction{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static final Logger logger = LoggerFactory.getLogger(LoginAction.class);
 	
 	@Autowired
@@ -57,7 +63,7 @@ public class LoginAction extends BaseAction{
 	public RespBody login(HttpServletRequest request,HttpServletResponse response,@Validated LoginForm form) throws Exception{
 		logger.info(form.getManageUser()+" login at "+DateUtils.getNowDateTime());
 		
-		if(!KaptchaImageCreateAction.validateRandCode(request, form.getCaptchaValue())){
+		if(!KaptchaUtils.validateRandCode(request, form.getCaptchaValue())){
 			respBody.setSuccess(false);
 			respBody.setMessage("校验码不正确");
 			return respBody;
