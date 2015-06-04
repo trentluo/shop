@@ -23,7 +23,7 @@ public class User implements Serializable {
 	private Date lastLogin;
 	private Date createDate;
 	private Date updateDate;
-	private String extention;
+	private String extension;
 
 	public String getUuid() {
 		return uuid;
@@ -113,12 +113,12 @@ public class User implements Serializable {
 		this.updateDate = updateDate;
 	}
 
-	public String getExtention() {
-		return extention;
+	public String getExtension() {
+		return extension;
 	}
 
-	public void setExtention(String extention) {
-		this.extention = extention;
+	public void setExtension(String extension) {
+		this.extension = extension;
 	}
 	
 	public String toString(){
@@ -134,7 +134,7 @@ public class User implements Serializable {
 		builder.append("lastLogin:"+lastLogin).append(",");
 		builder.append("createDate:"+createDate).append(",");
 		builder.append("updateDate:"+updateDate).append(",");
-		builder.append("extention:"+extention).append(",");
+		builder.append("extention:"+extension).append(",");
 		builder.append("}");
 		return builder.toString();
 	}

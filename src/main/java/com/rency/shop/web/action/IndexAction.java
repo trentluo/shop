@@ -19,6 +19,10 @@ import com.rency.shop.web.tools.Const;
 @RequestMapping("")
 public class IndexAction extends BaseAction{
 	
+	/** 
+	* @Fields serialVersionUID : TODO
+	*/ 
+	private static final long serialVersionUID = 254228777507409441L;
 	private static final Logger logger = LoggerFactory.getLogger(IndexAction.class);
 
 	@RequestMapping("/home.htm")

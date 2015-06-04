@@ -19,6 +19,12 @@ import com.rency.shop.web.tools.Const;
 @Controller
 public class ErrorAction extends BaseAction {
 
+	/** 
+	* @Fields serialVersionUID : TODO
+	*/ 
+	
+	private static final long serialVersionUID = -1256090001584305517L;
+
 	/**
 	 * 进入错误页面
 	 * 

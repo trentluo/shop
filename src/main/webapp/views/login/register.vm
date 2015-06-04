@@ -2,7 +2,7 @@
 <div class="wrap">
      <div class="login-box">
           <P class="exLogin-tit">账户注册</P>
-          <div class="from clearfix">
+          <div class="from clearfix" style="width:500px;padding-left:280px;">
           	<form id="registerForm" class="" action="#springUrl('/reg.htm')" method="POST" style="">
           		<div class="login-line mart10" style="display:none;" id="login_error_msg_parent">
            			<label class="label-no" for="login-user">提示</label>
@@ -32,11 +32,11 @@
                 <input type="hidden" name="userType" id="userType" value="$!resp.data.userType"/>
 				<div class="login-line">
                		<input id="iagree" type="checkbox" checked="" style="width:20px;" />
-                    <label for="iagree" style="display:inline; font-size:12px;">我已阅读并且同意维金的<a target="_blank" class="blu_a" href="#">用户协议</a> </label>
+                    <label for="iagree" style="display:inline; font-size:12px;">我已阅读并且同意维金的<a target="_blank" class="blu_a" style="color:#000;" href="#">用户协议</a> </label>
           		</div>
                 
                 <div class="login-line">
-               		<a id="user_login_submit" class="login-btn" onclick="return userLoginSubmit();" href="javascript:void(0)" title="注册">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</a>
+               		<a id="user_login_submit" class="login-btn" onclick="return userRegisterSubmit();" href="javascript:void(0)" title="注册">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</a>
           		</div>	
 	          </form>
           </div>
@@ -69,7 +69,6 @@ $("#manageUser").blur(function(){
 			dataType:'json',
 			data:$("#registerForm").serialize(),
 			success:function(data, textStatus, jqXHR){
-				console.info(data);
 				if(data.success) {
 					$("#login_error_msg_parent").hide();
 					$("#user_login_submit").removeAttr("disabled");
@@ -107,7 +106,6 @@ $("#iagree").change(function(){
 
 //表单提交
 function userRegisterSubmit() {
-	alert("submit");
 	var manageUser = $.trim($("#manageUser").val());
     if (manageUser.length == 0) {
     	$("#manageUser").next().removeClass("ok");
@@ -133,11 +131,6 @@ function userRegisterSubmit() {
     	reloadcode();
 		return false;
     }
-
-     if ($("#registerForm").valid()) {
-     	 return true;
-	 }else{
-	     return false;
-	 }
+	$("#registerForm").submit();
 };
 </script>

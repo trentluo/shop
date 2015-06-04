@@ -2,6 +2,6 @@ create database shop;
 use shop;
 
 --t_user
-create table t_user(UUID varchar(32) primary key,USERNAME varchar(200),PASSWD varchar(200),EMAIL varchar(200),MOBILE varchar(20),USERTYPE int,USERSTATUS int,CUURLOGIN timestamp,LASTLOGIN timestamp,CREATEDATE timestamp,UPDATEDATE timestamp,EXTENSION varchar(1000));
+create table t_user(uuid varchar(50) primary key,username varchar(200),passwd varchar(200),email varchar(200),mobile varchar(20),userType int,userStatus varchar(20),currLogin timestamp,lastLogin timestamp,createDate timestamp,updateDate timestamp,extension varchar(1000));
 --t_user_type
-create table t_user_type(TYPEID int,TYPENAME varchar(200),CREATEDATE timestamp);
+create table t_user_type(typeId int,typeName varchar(200),createDate timestamp);

@@ -3,7 +3,6 @@ package com.rency.shop.web.action;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URLEncoder;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,8 +18,6 @@ import org.rency.commons.toolbox.exception.CoreException;
 import org.rency.commons.toolbox.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rency.shop.web.entity.RespBody;
@@ -53,6 +50,28 @@ public class BaseAction implements Serializable{
     protected ModelAndView view(String url){
     	ModelAndView mv = new ModelAndView(url,"resp",respBody);
     	return mv;
+    }
+    
+    /**
+     * 返回成功
+    * @Title: success 
+    * @Description: TODO
+    * @Date: 2015年6月4日 下午9:57:23
+     */
+    protected void success(){
+    	respBody.setSuccess(true);
+    }
+    
+    /**
+     * 返回失败
+    * @Title: failed 
+    * @Description: TODO
+    * @Date: 2015年6月4日 下午9:58:01
+    * @param errorMessage
+     */
+    protected void failed(String errorMessage){
+    	respBody.setSuccess(false);
+    	respBody.setMessage(errorMessage);
     }
     
     /**

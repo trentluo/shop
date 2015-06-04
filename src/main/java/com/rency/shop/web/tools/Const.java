@@ -20,4 +20,9 @@ public class Const {
 	
 	public static final String VIEW_SUFFIX_COMMON = "common/";
 	
+	/**
+	 * 用户序列号名称
+	 */
+	public static final String SEQ_NAME_USER = "user";
+	
 }

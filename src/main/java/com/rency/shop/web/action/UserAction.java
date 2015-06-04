@@ -20,6 +20,11 @@ import com.rency.shop.web.service.UserService;
 @RequestMapping("/user")
 public class UserAction extends BaseAction{
 	
+	/** 
+	* @Fields serialVersionUID : TODO
+	*/ 
+	private static final long serialVersionUID = 199864864922867309L;
+
 	private static final Logger logger = LoggerFactory.getLogger(UserAction.class);
 	
 	@Autowired

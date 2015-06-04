@@ -1,0 +1,1 @@
+insert into shop.t_sequence(NAME,CURRENT_VALUE,INCREMENT,TOTAL,THRESHOLD) value("user",2000000,1,50,5);

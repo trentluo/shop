@@ -1,11 +1,15 @@
 package com.rency.shop.web.action;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.rency.commons.dal.sequence.service.SequenceRepository;
 import org.rency.commons.toolbox.common.SYSDICT;
 import org.rency.commons.toolbox.utils.DateUtils;
 import org.rency.commons.toolbox.utils.KaptchaUtils;
+import org.rency.commons.toolbox.utils.UUIDUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rency.shop.web.entity.RespBody;
 import com.rency.shop.web.entity.User;
+import com.rency.shop.web.enums.UserStatus;
 import com.rency.shop.web.form.LoginForm;
 import com.rency.shop.web.form.RegisterForm;
 import com.rency.shop.web.service.UserService;
@@ -35,6 +40,9 @@ public class LoginAction extends BaseAction{
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private SequenceRepository sequenceRepository;
 	
 	/**
 	 * 进入登录页面
@@ -101,8 +109,19 @@ public class LoginAction extends BaseAction{
 	@RequestMapping("/reg.htm")
 	public ModelAndView register(HttpServletRequest request,HttpServletResponse response,@Validated RegisterForm form) throws Exception{
 		logger.info("会员注册");
-		String fromUrl = request.getParameter(SYSDICT.URL_PARAM_CALLBACK_KEY);
-		respBody.setCallback(fromUrl);
+		String uuid = UUIDUtils.genetator() + sequenceRepository.next(Const.SEQ_NAME_USER);
+		User user = new User();
+		user.setUuid(uuid);
+		user.setEmail(form.getManageUser());
+		user.setCreateDate(new Date());
+		user.setUserStatus(UserStatus.INIT);
+		user.setUserType(form.getUserType());
+		boolean isCreate = userService.save(user);
+		if(isCreate){
+			super.success();
+		}else{
+			super.failed("注册失败");
+		}
         return view(Const.VIEW_SUFFIX_MAIN+"home");
 	}
 	

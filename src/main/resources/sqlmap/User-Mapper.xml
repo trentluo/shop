@@ -4,18 +4,18 @@
   
 <mapper namespace="com.rency.shop.web.dao.UserDao">  
     <resultMap id="userMapper" type="User">  
-        <id property="uuid" column="UUID" jdbcType="VARCHAR"/>  
-        <result property="username" column="USERNAME" jdbcType="VARCHAR"/>  
-        <result property="passwd" column="PASSWD" jdbcType="VARCHAR"/>  
-        <result property="email" column="EMAIL" jdbcType="VARCHAR"/>  
-        <result property="mobile" column="MOBILE" jdbcType="VARCHAR"/>
-        <result property="userType" column="USERTYPE" jdbcType="BIGINT"/>
-        <result property="userStatus" column="USERSTATUS" typeHandler="com.rency.shop.web.enums.UserStatusTypeHandler" />
-        <result property="currLogin" column="CURRLOGIN" jdbcType="TIMESTAMP"/>
-        <result property="lastLogin" column="LASTLOGIN" jdbcType="TIMESTAMP"/>    
-        <result property="createDate" column="CREATEDATE" jdbcType="TIMESTAMP"/>  
-        <result property="updateDate" column="UPDATEDATE" jdbcType="TIMESTAMP"/>    
-        <result property="extention" column="EXTENTION" jdbcType="VARCHAR"/>
+        <id property="uuid" column="uuid" jdbcType="VARCHAR"/>  
+        <result property="username" column="username" jdbcType="VARCHAR"/>  
+        <result property="passwd" column="passwd" jdbcType="VARCHAR"/>  
+        <result property="email" column="email" jdbcType="VARCHAR"/>  
+        <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+        <result property="userType" column="userType" jdbcType="BIGINT"/>
+        <result property="userStatus" column="userStatus" typeHandler="com.rency.shop.web.enums.UserStatusTypeHandler" />
+        <result property="currLogin" column="currLogin" jdbcType="TIMESTAMP"/>
+        <result property="lastLogin" column="lastLogin" jdbcType="TIMESTAMP"/>    
+        <result property="createDate" column="createDate" jdbcType="TIMESTAMP"/>  
+        <result property="updateDate" column="updateDate" jdbcType="TIMESTAMP"/>    
+        <result property="extension" column="extension" jdbcType="VARCHAR"/>
     </resultMap>  
     
     <select id="get" parameterType="String" resultMap="userMapper">  
@@ -23,12 +23,12 @@
     </select>
     
     <select id="findByEmail" parameterType="String" resultMap="userMapper">
-    	select * from t_user where EMAIL=#{email}
+    	select * from t_user where email=#{email}
     </select>
      
     <insert id="insert" parameterType="User">  
-        INSERT INTO t_user(UUID,USERNAME,PASSWD,EMAIL,MOBILE,USERTYPE,USERSTATUS,CUURLOGIN,LASTLOGIN,CREATEDATE,UPDATEDATE,EXTENSION)
-		VALUES (#{UUID},#{USERNAME},#{PASSWD},#{EMAIL},#{MOBILE},#{USERTYPE},#{USERSTATUS},#{CUURLOGIN},#{LASTLOGIN},#{CREATEDATE},#{UPDATEDATE},#{EXTENSION});
+        insert into t_user(uuid,username,passwd,email,mobile,userType,userStatus,currLogin,lastLogin,createDate,updateDate,extension)
+		values (#{uuid},#{username},#{passwd},#{email},#{mobile},#{userType},#{userStatus},#{currLogin},#{lastLogin},#{createDate},#{updateDate},#{extension});
     </insert>  
     
     <update id="update">
@@ -40,7 +40,7 @@
     </delete>
     
     <delete id="deleteById" parameterType="String">
-    	DELETE FROM t_user WHERE uuid=#{uuid}
+    	delete from t_user where uuid=#{uuid}
     </delete>
       
 </mapper>

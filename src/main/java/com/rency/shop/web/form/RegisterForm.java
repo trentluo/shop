@@ -5,8 +5,6 @@ import java.io.Serializable;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-import com.rency.shop.web.tools.JsonHelper;
-
 public class RegisterForm implements Serializable {
 
 	/**

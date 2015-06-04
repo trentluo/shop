@@ -1,8 +1,9 @@
 package com.rency.shop.web.enums;
 
 public enum UserStatus {
-	ACTIVED(1,"激活"),
-	LOCK(2,"锁定"),
+	INIT(1,"创建"),
+	ACTIVED(2,"激活"),
+	LOCK(3,"锁定"),
 	;
 	
 	private int code;
