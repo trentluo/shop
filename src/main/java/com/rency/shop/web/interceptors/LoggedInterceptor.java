@@ -1,13 +1,16 @@
 package com.rency.shop.web.interceptors;
 
-import java.util.Enumeration;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.rency.commons.toolbox.common.SYSDICT;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.rency.shop.web.entity.RespBody;
 
 public class LoggedInterceptor extends HandlerInterceptorAdapter {
 
@@ -16,7 +19,7 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws Exception {
-		return super.preHandle(request, response, handler);
+		return true;
 	}
 
 	/**
@@ -24,11 +27,14 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
 	 */
 	@Override
 	public void postHandle(HttpServletRequest request,HttpServletResponse response, Object handler,ModelAndView modelAndView) throws Exception {
-		Enumeration en = request.getHeaderNames();
-    	while(en.hasMoreElements()){
-    		System.out.println(en.nextElement());
-    	}
     	String fromUrl = request.getParameter(SYSDICT.URL_PARAM_CALLBACK_KEY);
+    	fromUrl = StringUtils.isBlank(fromUrl) ? request.getHeader("referer") : fromUrl;
+    	if(modelAndView == null){
+    		return;
+    	}    	
+    	Map<String, Object> model = modelAndView.getModel();
+    	RespBody resp = (RespBody) model.get("resp");
+    	resp.setCallback(fromUrl);
 	}
 
 	/**
@@ -36,7 +42,6 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
 	 */
 	@Override
 	public void afterCompletion(HttpServletRequest request,HttpServletResponse response, Object handler, Exception ex)throws Exception {
-		super.afterCompletion(request, response, handler, ex);
 	}
 
 }

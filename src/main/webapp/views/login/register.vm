@@ -88,7 +88,7 @@ $("#manageUser").blur(function(){
 
 $("#captchaValue").blur(function(){
 	var login_captcha = $.trim($("#captchaValue").val());
-	if(login_captcha.length.length !=0 && login_captcha.length != 4){
+	if(login_captcha.length !=0 && login_captcha.length != 4){
 		$("#login_error_msg").html('请输入4位的验证码!');
     	$("#login_error_msg_parent").show();
 		return false;

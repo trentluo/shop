@@ -46,15 +46,6 @@ function reloadcode() {
    	$("#randImage").attr("src","#springUrl('/captcha-image.htm')?id="+Math.random());
 }
 
-$("#login_captcha").blur(function(){
-	var login_captcha = $.trim($("#login_captcha").val());
-	if(login_captcha.length != 4){
-		$("#login_error_msg").html('请输入4位的验证码!');
-    	$("#login_error_msg_parent").show();
-		return false;
-	}
-}
-	
 $("#userEmail").blur(function(){
    	var userEmail = $.trim($("#userEmail").val());
    	if(userEmail.length==0){
@@ -70,6 +61,15 @@ $("#userEmail").blur(function(){
 	}else{
 		$("#login_error_msg_parent").hide();
 		$("#user_login_submit").removeAttr("disabled");
+	}
+});
+
+$("#login_captcha").blur(function(){
+	var login_captcha = $.trim($("#login_captcha").val());
+	if(login_captcha.length != 4){
+		$("#login_error_msg").html('请输入4位的验证码!');
+    	$("#login_error_msg_parent").show();
+		return false;
 	}
 });	
 	
@@ -114,5 +114,5 @@ function userLoginSubmit() {
 			return false;
 		}
 	});
-};
+}
 </script>
