@@ -1,11 +1,9 @@
 package com.rency.shop.web;
 
-
-
 /**
- * <p>资源枚举</p>
- * @author eric
- * @version $Id: FunctionEnum.java, v 0.1 2013-7-16 下午1:59:23  Exp $
+ * 前端资源地址
+ * @author rencaiyu
+ *
  */
 public enum URLS {
     INDEX("首页", "/index"),

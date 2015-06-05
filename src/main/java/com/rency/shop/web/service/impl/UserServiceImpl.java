@@ -2,7 +2,7 @@ package com.rency.shop.web.service.impl;
 
 import java.io.Serializable;
 
-import org.rency.commons.toolbox.exception.CoreException;
+import org.rency.common.utils.exception.CoreException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

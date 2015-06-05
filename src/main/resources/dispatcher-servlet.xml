@@ -3,13 +3,23 @@
     xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:aop="http://www.springframework.org/schema/aop"
     xsi:schemaLocation="
-         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://www.springframework.org/schema/context 
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/beans 
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/mvc 
+         http://www.springframework.org/schema/mvc/spring-mvc.xsd
          http://www.springframework.org/schema/aop
          http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:component-scan base-package="com.rency.shop.web.action" />
+    
+    <!-- 注册自定义argument resolver -->
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <bean class="com.rency.shop.web.resolver.WebProcessInfoResolver" />
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
     
     <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->  
     <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  

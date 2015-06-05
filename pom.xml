@@ -17,7 +17,7 @@
 	<logback.version>1.0.13</logback.version>
 	<logback.extensions.version>0.1.2</logback.extensions.version>
 	<jackson.version>1.9.8</jackson.version>
-	<commons.version>1.0.0-SNAPSHOT</commons.version>
+	<common.version>1.0.0-SNAPSHOT</common.version>
   </properties>
   
   <build>
@@ -323,14 +323,14 @@
   	</dependency>
 
   	<dependency>
-  		<groupId>org.rency</groupId>
-  		<artifactId>commons-api</artifactId>
-  		<version>${commons.version}</version>
+  		<groupId>org.rency.common</groupId>
+  		<artifactId>common-utils</artifactId>
+  		<version>${common.version}</version>
   	</dependency>
   	<dependency>
-  		<groupId>org.rency</groupId>
-  		<artifactId>commons-dao</artifactId>
-  		<version>${commons.version}</version>
+  		<groupId>org.rency.dal</groupId>
+  		<artifactId>common-dal</artifactId>
+  		<version>${common.version}</version>
   	</dependency>
   </dependencies>
   

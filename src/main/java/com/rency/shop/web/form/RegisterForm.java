@@ -2,9 +2,6 @@ package com.rency.shop.web.form;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
-
 public class RegisterForm implements Serializable {
 
 	/**
@@ -72,6 +69,15 @@ public class RegisterForm implements Serializable {
 	}
 	
 	public String toString(){
-		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+		StringBuilder builder = new StringBuilder();
+		builder.append("{");
+		builder.append("managerUser:").append(manageUser).append(", ");
+		builder.append("username:").append(username).append(", ");
+		builder.append("captchaValue:").append(captchaValue).append(", ");
+		builder.append("mobile:").append(mobile).append(", ");
+		builder.append("userType:").append(userType).append(", ");
+		builder.append("userStatus:").append(userStatus).append(", ");
+		builder.append("}");
+		return builder.toString();
 	}
 }

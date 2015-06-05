@@ -6,15 +6,15 @@
 	xmlns:aop="http://www.springframework.org/schema/aop" 
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-  		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  		http://www.springframework.org/schema/beans/spring-beans.xsd
   		http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
-     	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+     	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<aop:aspectj-autoproxy />
     <context:annotation-config />
@@ -27,6 +27,7 @@
 
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="true">
 		<property name="ignoreResourceNotFound" value="true" />
+		<property name="fileEncoding" value="UTF-8" />
 		<property name="locations">
 			<list>
 				<value>classpath:init.properties</value>
@@ -101,6 +102,7 @@
 				<value>captcha-image.htm</value>
 				<value>regInput.htm</value>
 				<value>reg.htm</value>
+				<value>regActive.htm</value>
 				<value>valid.htm</value>
 			</list>
 		</property>

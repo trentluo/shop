@@ -2,7 +2,7 @@ package com.rency.shop.web.dao;
 
 import java.io.Serializable;
 
-import org.rency.commons.toolbox.exception.CoreException;
+import org.rency.common.utils.exception.CoreException;
 import org.springframework.stereotype.Repository;
 
 import com.rency.shop.web.entity.User;

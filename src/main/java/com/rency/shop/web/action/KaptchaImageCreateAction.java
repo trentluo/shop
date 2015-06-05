@@ -3,7 +3,7 @@ package com.rency.shop.web.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.rency.commons.toolbox.utils.KaptchaUtils;
+import org.rency.common.utils.tool.KaptchaUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.rency.commons.toolbox.common.SYSDICT;
-import org.rency.commons.toolbox.enums.Errors;
-import org.rency.commons.toolbox.exception.CoreException;
-import org.rency.commons.toolbox.exception.UserException;
+import org.rency.common.utils.domain.SYSDICT;
+import org.rency.common.utils.enums.Errors;
+import org.rency.common.utils.exception.CoreException;
+import org.rency.common.utils.exception.UserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
